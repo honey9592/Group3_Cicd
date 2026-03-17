@@ -28,3 +28,10 @@ if ! grep -q "March 15, 2026" myapp/index.html; then
 fi
 
 echo "All required files are present and date check passed."
+
+
+echo "Checking if footer exists"
+if ! grep -q "<footer>" myapp/index.html; then
+  echo "ERROR: Footer not found in index.html" >&2
+  exit 1
+fi
