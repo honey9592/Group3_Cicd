@@ -28,3 +28,15 @@ if ! grep -q "March 15, 2026" myapp/index.html; then
 fi
 
 echo "All required files are present and date check passed."
+
+# Check that the page has a proper title
+if ! grep -q "<title>" myapp/index.html; then
+  echo "ERROR: <title> tag not found in index.html." >&2
+  exit 1
+fi
+
+# Check for HoneySingh's name in index.html (will FAIL initially)
+if ! grep -q "HoneySingh" myapp/index.html; then
+  echo "ERROR: HoneySingh's name not found in index.html." >&2
+  exit 1
+fi
