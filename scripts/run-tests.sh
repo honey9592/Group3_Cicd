@@ -28,3 +28,13 @@ if ! grep -q "March 15, 2026" myapp/index.html; then
 fi
 
 echo "All required files are present and date check passed."
+
+echo "Checking if <title> tag exists..."
+grep -q "<title>.*</title>" index.html
+
+if [ $? -ne 0 ]; then
+  echo "Test failed: <title> tag missing in index.html"
+  exit 1
+else
+  echo "Test passed: <title> tag exists!"
+fi
